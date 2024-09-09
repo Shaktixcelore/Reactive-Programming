@@ -11,7 +11,7 @@ public class Book {
     private int bookId;
 
     private String name;
-    
+
     @Column("book_desc")
     private String description;
 
@@ -34,6 +34,7 @@ public class Book {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public String getDescription() {
         return description;

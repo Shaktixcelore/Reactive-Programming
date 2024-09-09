@@ -53,7 +53,13 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
+    public Flux<Book> searchBooks(String name){
+        return this.bookRepository.searchBookByName("%" + name + "%");
+    }
+
+
+    @Override
     public Flux<Book> search(String query) {
-        return null;
+        throw new UnsupportedOperationException("Unimplemented method 'search'");
     }
 }

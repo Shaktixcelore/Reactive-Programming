@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -24,7 +26,7 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
-    
+
     // create
     @PostMapping
     public Mono<Book> create (@RequestBody Book book){
@@ -54,4 +56,12 @@ public class BookController {
     public Mono<Void> delete(@PathVariable int bookID){
         return bookService.delete(bookID);
     }
+
+    // search book
+    @GetMapping("/search")
+    public Flux<Book> searchBooks(@RequestParam ("Query") String query){
+        System.out.println(query);
+        return this.bookService.searchBooks(query);
+    }
+    
 }
